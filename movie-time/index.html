@@ -1,13 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+    <title>Movie Time</title>
+</head>
+
+<body>
+    <header>
+        <nav class="nav">
+            <h1 class="logo">MovieLand</h1>
+            <div class="search-wrapper">
+                <input type="text" placeholder="Search.." class="search">
+                <img src="./src/assets/search.png" alt="magnifier glass">
+            </div>
+
+            <ul class="nav-items">
+                <li class="nav-item"><a href="" class="link">Top 10</a></li>
+                <li class="nav-item"><a href="" class="link">Long Movies</a></li>
+                <li class="nav-item"><a href="" class="link">New Movies</a></li>
+                <li class="nav-item"><a href="" class="link">Our Recommendations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="cards-container"></section>
+
+    <!-- <section class="showcase">
+        <h2 class="showcase-heading">Life of Pi</h2>
+        <div class="movie-stats">
+            <p>2012 - 2h 7m</p>
+            <div class="movie-ratings">
+                <p>Rating: 7.9/10</p>
+                <p>Rank: 1</p>
+            </div>
+        </div>
+        <div class="showcase-images">
+            <img src="https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_QL75_UX380_CR0,0,380,562_.jpg"
+                alt="${movie.title} image">
+            <iframe src="https://www.youtube.com/embed/EXeTwQWrcwY" frameborder="0"></iframe>
+        </div>
+        <div class="movie-sub-stats">
+            <p class="movie-genre">Adventure, Drama, Fantasy</p>
+            <p class="movie-description">A young man who survives a disaster at sea is hurtled into an epic journey of
+                adventure and discovery. While
+                cast away, he forms an unexpected connection with another survivor: a fearsome Bengal tiger.</p>
+
+            <ul class="movie-crew">
+                <li class="movie-crew-item">Director: Ang Lee</li>
+                <li class="movie-crew-item"> Writers: Yann Martel, David Magee</li>
+                <li class="movie-crew-item">Stars: Suraj Sharma, Irrfan Khan, Adil Hussain</li>
+            </ul>
+        </div>
+
+    </section> -->
+
+    <script type="module" src="/src/script/main.ts"></script>
+</body>
+
 </html>
