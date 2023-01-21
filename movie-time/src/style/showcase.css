@@ -1,6 +1,6 @@
 .showcase {
     width: 80%;
-    margin: 0 auto;
+    margin: 5rem auto;
 }
 
 .showcase-heading {
@@ -63,4 +63,15 @@
     border-top: .2px solid #ffffff36;
     border-bottom: .2px solid #ffffff36;
     padding: 1rem 0;
+}
+
+.back-button {
+    padding: .7rem 1rem;
+    background-color: #355599;
+    color: white;
+    border: none;
+    margin-bottom: 5rem;
+    width: 7rem;
+    border-radius: 5px;
+    cursor: pointer;
 }
