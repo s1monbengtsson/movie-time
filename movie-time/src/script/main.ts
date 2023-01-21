@@ -1,5 +1,6 @@
 import '../style/style.css'
 import '../style/showcase.css'
+import '../style/hero.css'
 
 interface IMovie {
     description: string,
@@ -41,32 +42,68 @@ const fetchMovies = async () => {
 // returned values are store in variable
 const movies: IMovie[] = await fetchMovies()
 
+const topTen: IMovie[] = movies.slice(0, 10)
+
+const restOfMovies: IMovie[] = movies.slice(10)
+
+console.log("rest of movies:", restOfMovies)
+
+
+
+
 
 // iterate over all items in movies and print to DOM
 const renderMovies = () => {
-    movies.map(movie => {
-        document.querySelector('.cards-container')!.innerHTML += `
-    <div class="card">
-    <img src="${movie.image}"
-        alt="" class="card-img"
-        data-value="${movie.imdbid}">
-    <div class="card-text-wrapper">
-        <div class="rating">
-            <p class="card-rating">${movie.rating}<img src="./src/assets/star.png" class="star"></p>
-            <p class="card-rating">${movie.year}</p>
-        </div>
-        <div class="movie-main-info">
-            <h3 class="card-heading">${movie.title}</h3>
-            <p class="genre">${movie.genre}</p>
-        </div>
 
-        <div class="card-footer">
-            <button class="card-button"><a href="${movie.trailer}" target="_blank" class="link">Trailer</a></button>
-            <button class="card-button" data-value="info">Info</button>
+    // prints top 10 movies of all time
+    topTen.map(movie => {
+        document.querySelector('.top-10')!.innerHTML += `
+        <div class="card">
+        <img src="${movie.image}"
+            alt="" class="card-img"
+            data-value="${movie.imdbid}">
+        <div class="card-text-wrapper">
+            <div class="rating">
+                <p class="card-rating">${movie.rating}<img src="./src/assets/star.png" class="star"></p>
+                <p class="card-rating">${movie.year}</p>
+            </div>
+            <div class="movie-main-info">
+                <h3 class="card-heading">${movie.title}</h3>
+                <p class="genre">${movie.genre}</p>
+            </div>
+
+            <div class="card-footer">
+                <button class="card-button"><a href="${movie.trailer}" target="_blank" class="link">Trailer</a></button>
+                <button class="card-button" data-value="${movie.imdbid}">Info</button>
+            </div>
         </div>
     </div>
+        `
+    })
 
-</div>
+
+    restOfMovies.map(movie => {
+        document.querySelector('.movies')!.innerHTML += `
+    <div class="card">
+        <img src="${movie.image}"
+            alt="" class="card-img"
+            data-value="${movie.imdbid}">
+        <div class="card-text-wrapper">
+            <div class="rating">
+                <p class="card-rating">${movie.rating}<img src="./src/assets/star.png" class="star"></p>
+                <p class="card-rating">${movie.year}</p>
+            </div>
+            <div class="movie-main-info">
+                <h3 class="card-heading">${movie.title}</h3>
+                <p class="genre">${movie.genre}</p>
+            </div>
+
+            <div class="card-footer">
+                <button class="card-button"><a href="${movie.trailer}" target="_blank" class="link">Trailer</a></button>
+                <button class="card-button card-button-info" data-value="${movie.imdbid}">Info</button>
+            </div>
+        </div>
+    </div>
     `
     })
 }
@@ -74,13 +111,52 @@ const renderMovies = () => {
 renderMovies()
 
 
-console.log("movies:", movies)
-
 // find which movie click happend on
-document.querySelector('.card-button')!.addEventListener('click', e => {
+document.querySelector('.content-wrapper')!.addEventListener('click', e => {
     const target = e.target as HTMLElement
-    const clickedMovie = target.dataset.value
-    console.log("clicked movie:", clickedMovie)
+    const findClickedMovie = target.dataset.value
+    const clickedMovie = movies.find(movie => movie.imdbid === findClickedMovie)
+    console.log(clickedMovie)
+
+    if (target.className === "card-img" || target.className === "card-button") {
+        console.log("clicked on button:", findClickedMovie)
+
+        document.querySelector('.showcase')!.innerHTML = `
+        <button class="back-button">Back</button>
+        <h2 class="showcase-heading">${clickedMovie?.title}</h2>
+        <div class="movie-stats">
+            <p>${clickedMovie?.year}</p>
+            <div class="movie-ratings">
+                <p>Rating: ${clickedMovie?.rating}/10</p>
+                <p>Rank: ${clickedMovie?.rank}</p>
+            </div>
+        </div>
+        <div class="showcase-images">
+            <img src="${clickedMovie?.image}"
+                alt="${clickedMovie?.title} image">
+            <iframe src="${clickedMovie?.trailer}" frameborder="0"></iframe>
+        </div>
+        <div class="movie-sub-stats">
+            <p class="movie-genre">${clickedMovie?.genre}</p>
+            <p class="movie-description">${clickedMovie?.description}</p>
+
+            <ul class="movie-crew">
+                <li class="movie-crew-item">Director: ${clickedMovie?.director}</li>
+                <li class="movie-crew-item"> Writers: ${clickedMovie?.writers}</li>
+            </ul>
+        </div>
+
+        `
+        document.querySelector('.content-wrapper')!.innerHTML = ''
+    }
+})
+
+// lets user go back to previous page
+document.querySelector('.showcase')!.addEventListener('click', e => {
+    const target = e.target as HTMLElement
+    if (target.className === "back-button") {
+        window.location.reload()
+    }
 })
 
 
