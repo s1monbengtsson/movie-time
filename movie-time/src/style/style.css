@@ -11,15 +11,25 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
 .content-wrapper {
     width: 80%;
     margin: 0 auto;
 }
 
 .nav {
+    width: 100%;
+    position: fixed;
     height: 70px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 2rem;
     background-color: #355599;
@@ -28,6 +38,7 @@ body {
 .logo {
     color: white;
     font-size: 2rem;
+    cursor: pointer;
 }
 
 .nav-items {
@@ -36,12 +47,7 @@ body {
     justify-content: space-evenly;
 }
 
-.nav-item {
-    list-style: none;
-}
-
 .link {
-    text-decoration: none;
     color: white;
 }
 
@@ -55,8 +61,10 @@ body {
 
 .search-wrapper {
     display: flex;
-    width: 25%;
+    width: 40%;
+    margin: 0 3rem;
     position: relative;
+
 }
 
 .search-wrapper>img {
@@ -70,7 +78,6 @@ body {
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: auto;
     gap: 1rem;
-    padding: 3rem 0;
 }
 
 .card {

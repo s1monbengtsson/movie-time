@@ -1,6 +1,8 @@
 import '../style/style.css'
-import '../style/showcase.css'
 import '../style/hero.css'
+import '../style/showcase.css'
+import '../style/searchbar.css'
+import '../style/footer.css'
 
 interface IMovie {
     description: string,
@@ -44,20 +46,20 @@ const movies: IMovie[] = await fetchMovies()
 
 const topTen: IMovie[] = movies.slice(0, 10)
 
-const restOfMovies: IMovie[] = movies.slice(10)
-
-console.log("rest of movies:", restOfMovies)
+const newMovies = movies.filter(movie => movie.year > 2013)
 
 
-
-
+// goes back to home page when MovieLand logo is clicked
+document.querySelector('.logo')!.addEventListener('click', () => {
+    window.location.reload()
+})
 
 // iterate over all items in movies and print to DOM
-const renderMovies = () => {
+const renderMovies = (moviesArray: IMovie[], source: string) => {
 
     // prints top 10 movies of all time
-    topTen.map(movie => {
-        document.querySelector('.top-10')!.innerHTML += `
+    moviesArray.map(movie => {
+        document.querySelector(source)!.innerHTML += `
         <div class="card">
         <img src="${movie.image}"
             alt="" class="card-img"
@@ -80,39 +82,16 @@ const renderMovies = () => {
     </div>
         `
     })
-
-
-    restOfMovies.map(movie => {
-        document.querySelector('.movies')!.innerHTML += `
-    <div class="card">
-        <img src="${movie.image}"
-            alt="" class="card-img"
-            data-value="${movie.imdbid}">
-        <div class="card-text-wrapper">
-            <div class="rating">
-                <p class="card-rating">${movie.rating}<img src="./src/assets/star.png" class="star"></p>
-                <p class="card-rating">${movie.year}</p>
-            </div>
-            <div class="movie-main-info">
-                <h3 class="card-heading">${movie.title}</h3>
-                <p class="genre">${movie.genre}</p>
-            </div>
-
-            <div class="card-footer">
-                <button class="card-button"><a href="${movie.trailer}" target="_blank" class="link">Trailer</a></button>
-                <button class="card-button card-button-info" data-value="${movie.imdbid}">Info</button>
-            </div>
-        </div>
-    </div>
-    `
-    })
 }
 
-renderMovies()
+renderMovies(topTen, ".top-10")
+renderMovies(newMovies, ".new-movies")
+renderMovies(movies, ".all-movies")
 
 
 // find which movie click happend on
 document.querySelector('.content-wrapper')!.addEventListener('click', e => {
+
     const target = e.target as HTMLElement
     const findClickedMovie = target.dataset.value
     const clickedMovie = movies.find(movie => movie.imdbid === findClickedMovie)
@@ -147,9 +126,11 @@ document.querySelector('.content-wrapper')!.addEventListener('click', e => {
         </div>
 
         `
+        // empty rest of HTML on site
         document.querySelector('.content-wrapper')!.innerHTML = ''
     }
 })
+
 
 // lets user go back to previous page
 document.querySelector('.showcase')!.addEventListener('click', e => {
@@ -160,40 +141,48 @@ document.querySelector('.showcase')!.addEventListener('click', e => {
 })
 
 
-// function that presents more details about movie
-// const renderDetails = () => {
-//     // document.querySelector('.cards-container')!.innerHTML = ''
-//     document.querySelector('.showcase')!.innerHTML = `
-//     <section class="showcase">
-//         <h2 class="showcase-heading">Life of Pi</h2>
-//         <div class="movie-stats">
-//             <p>2012 - 2h 7m</p>
-//             <div class="movie-ratings">
-//                 <p>Rating: 7.9/10</p>
-//                 <p>Rank: 1</p>
-//             </div>
-//         </div>
-//         <div class="showcase-images">
-//             <img src="https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_QL75_UX380_CR0,0,380,562_.jpg"
-//                 alt="image">
-//             <iframe src="https://www.youtube.com/embed/EXeTwQWrcwY" frameborder="0"></iframe>
-//         </div>
-//         <div class="movie-sub-stats">
-//             <p class="movie-genre">Adventure, Drama, Fantasy</p>
-//             <p class="movie-description">A young man who survives a disaster at sea is hurtled into an epic journey of
-//                 adventure and discovery. While
-//                 cast away, he forms an unexpected connection with another survivor: a fearsome Bengal tiger.</p>
+// functionality for search bar
+document.querySelector('.search-wrapper')!.addEventListener('input', e => {
 
-//             <ul class="movie-crew">
-//                 <li class="movie-crew-item">Director: Ang Lee</li>
-//                 <li class="movie-crew-item"> Writers: Yann Martel, David Magee</li>
-//                 <li class="movie-crew-item">Stars: Suraj Sharma, Irrfan Khan, Adil Hussain</li>
-//             </ul>
-//         </div>
+    const dropdown = document.querySelector('.search-bar-dropdown')!
 
-//     </section>
-//     `
-// }
+    // empties dropdown to avoid duplicates
+    dropdown!.innerHTML = ''
+
+
+    const target = e.target as HTMLInputElement
+    const value = target.value.toLowerCase()
+    console.log("value:", value)
+
+
+
+    // returns movies that matches input
+    const searchedMovie: IMovie[] = movies.filter(movie => movie.title.toLowerCase().includes(value))
+
+
+    if (value.length >= 2) {
+        // opens dropdown and displays movies that matches search value
+        document.querySelector('.search-bar-dropdown')!.classList.remove("hidden")
+
+        // iterates over and prints every matching movie to DOM
+        searchedMovie.map(movie => {
+
+            dropdown!.innerHTML += `
+                            <div class="dropdown-row">
+                        <div class="dropdown-img">
+                            <img src="${movie.thumbnail}"
+                                alt="" class="thumbnail">
+                        </div>
+                        <div class="dropdown-text">
+                            <h3>${movie.title}</h3>
+                            <p>${movie.year}</p>
+                            <p>${movie.director}</p>
+                        </div>
+                    </div>
+                    `
+        })
+    }
+})
 
 
 

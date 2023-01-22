@@ -1,5 +1,5 @@
 .hero {
-    height: 55vh;
+    height: 70vh;
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -31,17 +31,17 @@
 .sub-heading {
     color: #355599;
     font-size: 2rem;
-    padding-top: 3rem;
+    padding: 3rem 0;
 }
 
-.top-rated {
+.movie-container {
     border-bottom: 2px solid #355599;
 }
 
-.top-10 {
+.movie-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: auto;
     gap: 1rem;
-    padding: 3rem 0;
+    padding-bottom: 5rem;
 }
