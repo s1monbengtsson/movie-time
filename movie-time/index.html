@@ -18,44 +18,67 @@
             </div>
 
             <ul class="nav-items">
-                <li class="nav-item"><a href="" class="link">Top 10</a></li>
-                <li class="nav-item"><a href="" class="link">Long Movies</a></li>
-                <li class="nav-item"><a href="" class="link">New Movies</a></li>
-                <li class="nav-item"><a href="" class="link">Our Recommendations</a></li>
+                <li class="nav-item"><a href="#" class="link">Top 10</a></li>
+                <li class="nav-item"><a href="#" class="link">New Movies</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="cards-container"></section>
+    <div class="content-wrapper">
+        <main class="hero">
+            <h2 class="hero-heading">Welcome to <span class="hero-logo">MovieLand</span></h2>
+            <p class="hero-para">We have gathered the top 100 movies of all time based on IMDB ratings. You won't leave
+                without knowing what to watch next!</p>
+        </main>
 
-    <!-- <section class="showcase">
-        <h2 class="showcase-heading">Life of Pi</h2>
-        <div class="movie-stats">
-            <p>2012 - 2h 7m</p>
-            <div class="movie-ratings">
-                <p>Rating: 7.9/10</p>
-                <p>Rank: 1</p>
+
+        <div class="movie-container">
+            <h3 class="sub-heading">Top 10</h3>
+            <div class="top-10 movie-grid"></div>
+        </div>
+
+        <div class="movie-container">
+            <h3 class="sub-heading">New Movies</h3>
+            <div class="new-movies movie-grid"></div>
+        </div>
+
+        <section class="cards-container">
+            <h3 class="sub-heading">All Movies</h3>
+            <div class="all-movies movie-grid"></div>
+        </section>
+
+
+    </div>
+    <section class="showcase"></section>
+
+    <div class="search-bar-dropdown hidden">
+        <!-- <div class="dropdown-row">
+            <div class="dropdown-img">
+                <img src="https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY67_CR0,0,45,67_AL_.jpg"
+                    alt="" class="thumbnail">
             </div>
-        </div>
-        <div class="showcase-images">
-            <img src="https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_QL75_UX380_CR0,0,380,562_.jpg"
-                alt="${movie.title} image">
-            <iframe src="https://www.youtube.com/embed/EXeTwQWrcwY" frameborder="0"></iframe>
-        </div>
-        <div class="movie-sub-stats">
-            <p class="movie-genre">Adventure, Drama, Fantasy</p>
-            <p class="movie-description">A young man who survives a disaster at sea is hurtled into an epic journey of
-                adventure and discovery. While
-                cast away, he forms an unexpected connection with another survivor: a fearsome Bengal tiger.</p>
+            <div class="dropdown-text">
+                <h3>The Shawshank Redemption</h3>
+                <p>1994</p>
+                <p>Tim Robbins, Morgan Freeman</p>
+            </div>
+        </div> -->
+    </div>
 
-            <ul class="movie-crew">
-                <li class="movie-crew-item">Director: Ang Lee</li>
-                <li class="movie-crew-item"> Writers: Yann Martel, David Magee</li>
-                <li class="movie-crew-item">Stars: Suraj Sharma, Irrfan Khan, Adil Hussain</li>
-            </ul>
+    <section class="footer">
+        <ul class="footer-items">
+            <li class="footer-item"><a href="" class="link">Home</a></li>
+            <li class="footer-item"><a href="" class="link">Top 10</a></li>
+            <li class="footer-item"><a href="" class="link">New Movies</a></li>
+        </ul>
+        <div class="footer-credits">
+            <h2 class="footer-logo">MovieLand</h2>
+            <p>&copy; MovieLand 2023 | <a href="https://rapidapi.com/">API provided by rapidapi.com</a></p>
         </div>
+    </section>
 
-    </section> -->
+
+
 
     <script type="module" src="/src/script/main.ts"></script>
 </body>
