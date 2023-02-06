@@ -23,16 +23,24 @@ a {
 .content-wrapper {
     width: 80%;
     margin: 0 auto;
+    scroll-padding-top: 100px;
 }
 
 .nav {
-    width: 100%;
+    width: 100vw;
     position: fixed;
     height: 70px;
     display: flex;
     align-items: center;
     padding: 2rem;
     background-color: #355599;
+    z-index: 999;
+}
+.nav-content {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .logo {

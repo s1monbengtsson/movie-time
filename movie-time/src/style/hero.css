@@ -40,7 +40,7 @@
 
 .movie-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-template-rows: auto;
     gap: 1rem;
     padding-bottom: 5rem;
