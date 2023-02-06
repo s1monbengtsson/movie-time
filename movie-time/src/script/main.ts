@@ -3,6 +3,8 @@ import '../style/hero.css'
 import '../style/showcase.css'
 import '../style/searchbar.css'
 import '../style/footer.css'
+import '../style/menu.css'
+import '../style/breakpoints.css'
 
 interface IMovie {
     description: string,
@@ -184,6 +186,21 @@ document.querySelector('.search-wrapper')!.addEventListener('input', e => {
     }
 })
 
+document.querySelector('.content-wrapper')!.addEventListener('click', e => {
+
+    const dropdown = document.querySelector('.search-bar-dropdown')!
+
+    if(e.target !== dropdown) {
+        dropdown.classList.add('hidden')
+    }
+})
+
+const menuBtn = document.querySelector('#menu-btn')!
+const menu = document.querySelector('.menu')!
+
+menuBtn.addEventListener('click', () => {
+    menu.classList.toggle('menu-display')
+})
 
 
 
