@@ -11,16 +11,20 @@
 <body>
     <header>
         <nav class="nav">
-            <h1 class="logo">MovieLand</h1>
-            <div class="search-wrapper">
-                <input type="text" placeholder="Search.." class="search">
-                <img src="./src/assets/search.png" alt="magnifier glass">
+            <div class="nav-content">
+                <h1 class="logo">MovieLand</h1>
+                <div class="search-wrapper">
+                    <input type="text" placeholder="Search.." class="search">
+                    <img src="./src/assets/search.png" alt="magnifier glass">
+                </div>
+    
+                <ul class="nav-items menu">
+                    <li class="nav-item"><a href="#top-10" class="link">Top 10</a></li>
+                    <li class="nav-item"><a href="#new-movies" class="link">New Movies</a></li>
+                </ul>
+                <button class="menu-wrapper" id="menu-btn">Menu</button>
             </div>
-
-            <ul class="nav-items">
-                <li class="nav-item"><a href="#" class="link">Top 10</a></li>
-                <li class="nav-item"><a href="#" class="link">New Movies</a></li>
-            </ul>
+            
         </nav>
     </header>
 
@@ -33,12 +37,12 @@
 
 
         <div class="movie-container">
-            <h3 class="sub-heading">Top 10</h3>
+            <h3 class="sub-heading" id="top-10">Top 10</h3>
             <div class="top-10 movie-grid"></div>
         </div>
 
         <div class="movie-container">
-            <h3 class="sub-heading">New Movies</h3>
+            <h3 class="sub-heading" id="new-movies">New Movies</h3>
             <div class="new-movies movie-grid"></div>
         </div>
 
@@ -52,17 +56,6 @@
     <section class="showcase"></section>
 
     <div class="search-bar-dropdown hidden">
-        <!-- <div class="dropdown-row">
-            <div class="dropdown-img">
-                <img src="https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY67_CR0,0,45,67_AL_.jpg"
-                    alt="" class="thumbnail">
-            </div>
-            <div class="dropdown-text">
-                <h3>The Shawshank Redemption</h3>
-                <p>1994</p>
-                <p>Tim Robbins, Morgan Freeman</p>
-            </div>
-        </div> -->
     </div>
 
     <section class="footer">
