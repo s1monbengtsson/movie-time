@@ -193,7 +193,7 @@ document.querySelector('.search-bar-dropdown')!.addEventListener('click', e => {
     const dropdownImg = document.querySelector('.dropdown-img')!
     const dropdownText = document.querySelector('.dropdown-text')!
     const dropdownRow = document.querySelector('.dropdown-row')!
-    const searchbarDropdown = document.querySelector('.search-bar-dropdown')!
+
 
     // find which movie click happend on
 
