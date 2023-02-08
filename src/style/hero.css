@@ -45,3 +45,8 @@
     gap: 1rem;
     padding-bottom: 5rem;
 }
+
+.render-fail {
+    color: white;
+    text-align: center;
+}
