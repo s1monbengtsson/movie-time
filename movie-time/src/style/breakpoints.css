@@ -11,6 +11,11 @@
     .movie-grid {
         grid-template-columns: repeat(4, 1fr);
     }
+    .search-bar-dropdown {
+        width: 100%;
+        left: 0;
+        z-index: 10;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -34,12 +39,9 @@
         text-align: center;
     }
 
-    .search-bar-dropdown {
-        height: 100vh;
-        width: 100%;
-        left: 0;
-        z-index: 10;
-    }
+
+
+
 }
 
 @media screen and (max-width: 560px) {
