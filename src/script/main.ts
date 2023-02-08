@@ -24,7 +24,9 @@ const getMovies = async () => {
         renderMovies(movies, ".all-movies")
 
     } catch (err){
-        document.querySelector('.movie-container')!.innerHTML = `<h2>Could not get movies.. Please try again later</h2>`
+        document.querySelector('.hero')!.innerHTML = ''
+        document.querySelector('.movie-container')!.innerHTML = ''
+        document.querySelector('.hero')!.innerHTML = `<h2 class="render-fail">Could not get movies.. Please try again later</h2>`
     }
 }
 
