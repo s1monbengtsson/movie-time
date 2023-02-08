@@ -18,6 +18,6 @@
   "include": ["src"],
 
   "build": {
-    "target": "esnext"
+    "target": "ESNext"
   }
 }
