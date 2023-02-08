@@ -8,7 +8,6 @@
     top: 70px;
     width: 50%;
     left: 12%;
-    height: 100vh;
     overflow-y: scroll;
 }
 
@@ -19,7 +18,7 @@
 }
 
 .dropdown-img {
-    width: 10%;
+    width: 15%;
 }
 
 .thumbnail {
