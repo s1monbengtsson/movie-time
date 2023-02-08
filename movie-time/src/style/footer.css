@@ -1,0 +1,30 @@
+.footer {
+    background-color: #355599;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.footer-items {
+    height: 10vh;
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.footer-item {
+    list-style: none;
+}
+
+.footer-credits {
+    color: white;
+    text-align: center;
+
+}
+
+.footer-logo {
+    position: absolute;
+    top: 5vh;
+    left: 2rem;
+}

@@ -1,0 +1,27 @@
+.hidden {
+    display: none;
+}
+
+.search-bar-dropdown {
+    background-color: white;
+    position: absolute;
+    top: 70px;
+    width: 50%;
+    left: 12%;
+    overflow-y: scroll;
+}
+
+.dropdown-row {
+    display: flex;
+    padding: .5rem;
+    border-bottom: 1px solid black;
+}
+
+.dropdown-img {
+    width: 15%;
+}
+
+.thumbnail {
+    height: 67px;
+    width: 45px;
+}
