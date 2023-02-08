@@ -130,6 +130,7 @@ document.querySelector('.content-wrapper')!.addEventListener('click', e => {
         `
         // empty rest of HTML on site
         document.querySelector('.content-wrapper')!.innerHTML = ''
+        window.scrollTo(1,1)
     }
 })
 
@@ -192,6 +193,7 @@ document.querySelector('.search-bar-dropdown')!.addEventListener('click', e => {
     const dropdownImg = document.querySelector('.dropdown-img')!
     const dropdownText = document.querySelector('.dropdown-text')!
     const dropdownRow = document.querySelector('.dropdown-row')!
+    const searchbarDropdown = document.querySelector('.search-bar-dropdown')!
 
     // find which movie click happend on
 
@@ -232,6 +234,9 @@ document.querySelector('.search-bar-dropdown')!.addEventListener('click', e => {
         // empty rest of HTML on site
         document.querySelector('.content-wrapper')!.innerHTML = ''
         document.querySelector('.search-bar-dropdown')!.classList.add('hidden')
+        window.scrollTo(1,1)
+    } else if (target !== dropdownImg || dropdownText || dropdownText) {
+        document.querySelector('.search-bar-dropdown')!.classList.add('hidden')
     }
 })
 
@@ -239,6 +244,14 @@ document.querySelector('.content-wrapper')!.addEventListener('click', e => {
 
     const dropdown = document.querySelector('.search-bar-dropdown')!
 
+    if(e.target !== dropdown) {
+        dropdown.classList.add('hidden')
+    } 
+})
+
+document.querySelector('.showcase')!.addEventListener('click', e => {
+
+    const dropdown = document.querySelector('.search-bar-dropdown')!
 
     if(e.target !== dropdown) {
         dropdown.classList.add('hidden')
