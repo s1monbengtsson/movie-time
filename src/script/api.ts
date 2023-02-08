@@ -1,9 +1,7 @@
-/**
- * Fetching movies from api
- */
+// Fetching movies from API
 export const fetchMovies = async () => {
 	const res = await fetch(
-		'VITE_RAPIDAPI_KEY',
+		'https://imdb-top-100-movies.p.rapidapi.com/',
 		options
 	)
 
