@@ -154,9 +154,6 @@ document.querySelector('.search-wrapper')!.addEventListener('input', e => {
 
     const target = e.target as HTMLInputElement
     const value = target.value.toLowerCase()
-    console.log("value:", value)
-
-
 
     // returns movies that matches input
     const searchedMovie: IMovie[] = movies.filter(movie => movie.title.toLowerCase().includes(value))
@@ -164,25 +161,77 @@ document.querySelector('.search-wrapper')!.addEventListener('input', e => {
 
     if (value.length >= 2) {
         // opens dropdown and displays movies that matches search value
-        document.querySelector('.search-bar-dropdown')!.classList.remove("hidden")
+        dropdown.classList.remove("hidden")
+        window.scrollTo(1,1)
 
         // iterates over and prints every matching movie to DOM
         searchedMovie.map(movie => {
 
             dropdown!.innerHTML += `
-                            <div class="dropdown-row">
-                        <div class="dropdown-img">
+                            <div class="dropdown-row" data-value="${movie.imdbid}">
+                        <div class="dropdown-img" data-value="${movie.imdbid}">
                             <img src="${movie.thumbnail}"
-                                alt="" class="thumbnail">
+                                alt="" class="thumbnail"
+                                data-value="${movie.imdbid}">
                         </div>
-                        <div class="dropdown-text">
-                            <h3>${movie.title}</h3>
-                            <p>${movie.year}</p>
-                            <p>${movie.director}</p>
+                        <div class="dropdown-text" data-value="${movie.imdbid}">
+                            <h3 data-value="${movie.imdbid}">${movie.title}</h3>
+                            <p data-value="${movie.imdbid}">${movie.year}</p>
+                            <p data-value="${movie.imdbid}">${movie.director}</p>
                         </div>
                     </div>
                     `
         })
+    } else {
+        dropdown.classList.add('hidden')
+    }
+})
+
+document.querySelector('.search-bar-dropdown')!.addEventListener('click', e => {
+
+    const dropdownImg = document.querySelector('.dropdown-img')!
+    const dropdownText = document.querySelector('.dropdown-text')!
+    const dropdownRow = document.querySelector('.dropdown-row')!
+
+    // find which movie click happend on
+
+    const target = e.target as HTMLElement
+    const findClickedMovie = target.dataset.value
+    const clickedMovie = movies.find(movie => movie.imdbid === findClickedMovie)
+    console.log(clickedMovie)
+
+    if (target === dropdownImg || target === dropdownText || dropdownRow) {
+        console.log("clicked on button:", findClickedMovie)
+
+        document.querySelector('.showcase')!.innerHTML = `
+        <button class="back-button">Back</button>
+        <h2 class="showcase-heading">${clickedMovie?.title}</h2>
+        <div class="movie-stats">
+            <p>${clickedMovie?.year}</p>
+            <div class="movie-ratings">
+                <p>Rating: ${clickedMovie?.rating}/10</p>
+                <p>Rank: ${clickedMovie?.rank}</p>
+            </div>
+        </div>
+        <div class="showcase-images">
+            <img src="${clickedMovie?.image}"
+                alt="${clickedMovie?.title} image">
+            <iframe src="${clickedMovie?.trailer}" frameborder="0"></iframe>
+        </div>
+        <div class="movie-sub-stats">
+            <p class="movie-genre">${clickedMovie?.genre}</p>
+            <p class="movie-description">${clickedMovie?.description}</p>
+
+            <ul class="movie-crew">
+                <li class="movie-crew-item">Director: ${clickedMovie?.director}</li>
+                <li class="movie-crew-item"> Writers: ${clickedMovie?.writers}</li>
+            </ul>
+        </div>
+
+        `
+        // empty rest of HTML on site
+        document.querySelector('.content-wrapper')!.innerHTML = ''
+        document.querySelector('.search-bar-dropdown')!.classList.add('hidden')
     }
 })
 
@@ -190,9 +239,10 @@ document.querySelector('.content-wrapper')!.addEventListener('click', e => {
 
     const dropdown = document.querySelector('.search-bar-dropdown')!
 
+
     if(e.target !== dropdown) {
         dropdown.classList.add('hidden')
-    }
+    } 
 })
 
 const menuBtn = document.querySelector('#menu-btn')!
