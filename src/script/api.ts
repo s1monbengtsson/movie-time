@@ -1,7 +1,6 @@
 /**
  * Fetching movies from api
  */
-
 export const fetchMovies = async () => {
 	const res = await fetch(
 		'VITE_RAPIDAPI_KEY',
