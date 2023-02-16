@@ -19,7 +19,7 @@ const options = {
 	method: 'GET',
 	headers: {
 		'Content-Type': 'application.json',
-		'X-RapidAPI-Key': '7b1dc438damsh4b7942ffbd9b89ap1a8c0ajsn3730c02dab28',
+		'X-RapidAPI-Key': API_KEY,
 		'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com',
 		'X-Content-Type': 'Options: nosniff'
 	}
