@@ -13,7 +13,7 @@ export const fetchMovies = async () => {
 	return await res.json()
 }
 
-const API_KEY = import.meta.env.VITE_RAPIDAPI_KEY
+const API_KEY = import.meta.env.API_KEY
 
 const options = {
 	method: 'GET',
